@@ -8,6 +8,10 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.hidden{
+    display: none;
+}
+
 body{
     height: 100vh;
 }
@@ -20,6 +24,31 @@ main{
 }
 
 .lateral {
+    background-color: rgb(37, 37, 37);
+    padding: 10px;
+}
+
+.lateral button{
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+    background-color: #566981;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tarefas {
+    width: 340px;
+    height: 95vh;
+    background-image: linear-gradient(to top, #566981, #3a415a);
+    text-align: center;
+    color: white;
+    padding: 10px;
+    overflow-y: auto;
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.568);
+}
+
+.historico {
     width: 340px;
     height: 95vh;
     background-image: linear-gradient(to top, #566981, #3a415a);
@@ -119,3 +148,4 @@ footer h1{
     color: black;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.267);
 }
+

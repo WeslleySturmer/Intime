@@ -4,6 +4,10 @@ const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
 const resetButton = document.getElementById("reset");
 const nextButton = document.getElementById("next");
+const tarefasBtn = document.getElementById("tarefas-btn");
+const historicoBtn = document.getElementById("historico-btn");
+const tarefasArea = document.getElementById("tarefas-area");
+const historicoArea = document.getElementById("historico-area");
 
 // Variáveis para controlar o tempo e o intervalo
 let seconds = 0;
@@ -72,7 +76,7 @@ nextButton.addEventListener("click", () => {
 });
 
 
-const taskContainer = document.querySelector(".lateral"); // Captura a barra lateral
+const taskContainer = document.querySelector(".tarefas"); // Captura a barra lateral
 
 function saveTasks() {
     //vai organizar as tasks em chave valor
@@ -159,3 +163,22 @@ document.getElementById("finalizar-dia").addEventListener("click", () => {
     document.querySelectorAll(".task").forEach(task => task.remove());
     localStorage.removeItem("tasks");
 })
+
+//funcao que adicionar o .hidden em historico para ficar visivel task
+function showTasks() {
+    tarefasArea.classList.remove("hidden");
+    historicoArea.classList.add("hidden");
+};
+
+//funcao que adicionar o .hidden em task para ficar visivel historico
+function showHistory() {
+    historicoArea.classList.remove("hidden");
+    tarefasArea.classList.add("hidden");
+};
+
+//evento de click que executa a função acima
+tarefasBtn.addEventListener("click", showTasks);
+historicoBtn.addEventListener("click", showHistory);
+
+//quando abrir o navegador vai mostrar as task
+window.addEventListener("load", showTasks);

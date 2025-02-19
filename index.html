@@ -6,16 +6,23 @@
     <title>Timer</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-
 </head>
 <body>
     <main>
         <div class="lateral">
+            <button id="tarefas-btn">T</button>
+            <button id="historico-btn">H</button>
+        </div>
+
+        <div class="tarefas" id="tarefas-area">
             <h1>Tarefas</h1>
             <button id="finalizar-dia">Finalizar dia</button>
-            <button id="ver-historico">📜 Histórico</button>
             <div id="historico" class="historico-container"></div>
 
+        </div>
+
+        <div class="historico" id="historico-area">
+            <h1>Histórico</h1>
         </div>
 
         <div class="cronometro">
@@ -30,7 +37,6 @@
             </div>
         </div>
     </main>
-    <script src="script.js"></script>
     <footer>
         <h1>Created by Weslley Sturms</h1>
     </footer>
