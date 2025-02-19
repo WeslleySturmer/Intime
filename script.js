@@ -15,41 +15,44 @@ let minutes = 0;
 let hours = 0;
 let interval = null;
 
-// função pra atualizar segundos minutos e horas
+// Função para atualizar o timer
 function update_timer() {
-    seconds++
-    if (seconds == 60){
-        seconds = 0
-        minutes ++
+    seconds++;
+    if (seconds == 60) {
+        seconds = 0;
+        minutes++;
         if (minutes == 60) {
-            minutes = 0
-            hours ++
+            minutes = 0;
+            hours++;
         }
     }
 
-// formata o tempo separando por dois ponto
-const formattedtime = 
-String(hours).padStart(2,"0") + ":" +
-String(minutes).padStart(2,"0") + ":" +
-String(seconds).padStart(2,"0"); 
+    // Formata o tempo
+    const formattedtime = 
+        String(hours).padStart(2, "0") + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
 
-timerDisplay.textContent = formattedtime
+    timerDisplay.textContent = formattedtime;
 }
 
+// Iniciar timer
 startButton.addEventListener("click", () => {
     if (!interval) {
         interval = setInterval(update_timer, 1000);
     }
 });
 
+// Parar timer
 stopButton.addEventListener("click", () => {
     clearInterval(interval);
     interval = null;
 });
 
+// Resetar timer
 resetButton.addEventListener("click", () => {
-    const lastTime = timerDisplay.textContent; //tempo atual
-    addTask(lastTime); //cria a tarefa com o tempo registrado
+    const lastTime = timerDisplay.textContent;
+    addTask(lastTime);
 
     clearInterval(interval);
     interval = null;
@@ -59,9 +62,10 @@ resetButton.addEventListener("click", () => {
     timerDisplay.textContent = "00:00:00";
 });
 
+// Próxima tarefa (next)
 nextButton.addEventListener("click", () => {
-    const lastTime = timerDisplay.textContent; //tempo atual
-    addTask(lastTime); //cria a tarefa com o tempo registrado
+    const lastTime = timerDisplay.textContent;
+    addTask(lastTime);
 
     clearInterval(interval);
     interval = null;
@@ -70,59 +74,45 @@ nextButton.addEventListener("click", () => {
     hours = 0;
     timerDisplay.textContent = "00:00:00";
 
-    if (!interval) {
-        interval = setInterval(update_timer, 1000);
-    }
+    interval = setInterval(update_timer, 1000);
 });
 
-
-const taskContainer = document.querySelector(".tarefas"); // Captura a barra lateral
+const taskContainer = document.querySelector(".tarefas");
 
 function saveTasks() {
-    //vai organizar as tasks em chave valor
     const tasks = [];
     document.querySelectorAll(".task").forEach(task => {
-
         const taskName = task.querySelector(".task-name").value;
         const taskTime = task.querySelector("span").textContent;
-        tasks.push({name: taskName, time: taskTime});
+        tasks.push({ name: taskName, time: taskTime });
     });
 
-    //joga pra o localstorage num json
     localStorage.setItem("tasks", JSON.stringify(tasks));
-};
+}
 
-//carrega as tasks
 function loadTasks() {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     savedTasks.forEach(task => addTask(task.time, task.name));
-};
+}
 
-//executa ao iniciar a página
-window.addEventListener("load", loadTasks)
+window.addEventListener("load", loadTasks);
 
-//funcao pra criar tarefa
 function addTask(time, name = "Nova tarefa") {
-    //criar elemento da tarefa
     const task = document.createElement("div");
     task.classList.add("task");
 
-    //criar input para editar a tarefa 
     const taskName = document.createElement("input");
     taskName.type = "text";
     taskName.value = name;
     taskName.classList.add("task-name");
 
-    //criar span pra mostrar o tempo registrado
     const taskTime = document.createElement("span");
     taskTime.textContent = time;
 
-    //criar botão de deletar a task
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "🗑️";
     deleteButton.classList.add("delete-task");
 
-    //remover a tarefa ao clicar no botão
     deleteButton.addEventListener("click", () => {
         task.remove();
         saveTasks();
@@ -130,15 +120,11 @@ function addTask(time, name = "Nova tarefa") {
 
     taskName.addEventListener("input", saveTasks);
 
-    //adicionar os elemtentos da tarefa
     task.appendChild(taskName);
     task.appendChild(taskTime);
     task.appendChild(deleteButton);
-
-    //adicionar na div lateral
     taskContainer.appendChild(task);
 
-    // Salvar as tarefas no Local Storage
     saveTasks();
 }
 
@@ -149,36 +135,91 @@ document.getElementById("finalizar-dia").addEventListener("click", () => {
     document.querySelectorAll(".task").forEach(task => {
         const taskName = task.querySelector(".task-name").value;
         const taskTime = task.querySelector("span").textContent;
-        tasks.push({name: taskName, time: taskTime})
+        tasks.push({ name: taskName, time: taskTime });
     });
 
-    //pegar registros anteriores
     let taskHistory = JSON.parse(localStorage.getItem("taskHistory")) || {};
 
-    //salvar a tarefa do dia na chave correspondente
-    taskHistory[today] = tasks;
+    // Calcular horas totais
+    const totalHours = calculateTotalHours(tasks);
+
+    taskHistory[today] = { tasks, totalHours };
     localStorage.setItem("taskHistory", JSON.stringify(taskHistory));
 
-    //limpar as tarefas da lateral
     document.querySelectorAll(".task").forEach(task => task.remove());
     localStorage.removeItem("tasks");
-})
+});
 
-//funcao que adicionar o .hidden em historico para ficar visivel task
 function showTasks() {
     tarefasArea.classList.remove("hidden");
     historicoArea.classList.add("hidden");
-};
+}
 
-//funcao que adicionar o .hidden em task para ficar visivel historico
 function showHistory() {
     historicoArea.classList.remove("hidden");
     tarefasArea.classList.add("hidden");
-};
+}
 
-//evento de click que executa a função acima
 tarefasBtn.addEventListener("click", showTasks);
 historicoBtn.addEventListener("click", showHistory);
-
-//quando abrir o navegador vai mostrar as task
 window.addEventListener("load", showTasks);
+
+function calculateTotalHours(tasks) {
+    return tasks.reduce((total, task) => {
+        const [hours, minutes, seconds] = task.time.split(":").map(Number);
+        return total + (hours + minutes / 60 + seconds / 3600);
+    }, 0);
+}
+
+function loadHistory() {
+    const taskHistory = JSON.parse(localStorage.getItem("taskHistory")) || {};
+    historicoArea.innerHTML = "<h1>Histórico</h1>";
+
+    for (const [date, data] of Object.entries(taskHistory)) {
+        const historyItem = document.createElement("div");
+        historyItem.classList.add("history-item");
+        historyItem.innerHTML = `
+            <div>
+                <span>${date}</span>
+                <span>Total: ${data.totalHours.toFixed(2)} horas</span>
+            </div>
+            <button class="expand-btn">Ver mais</button>
+        `;
+
+        historyItem.querySelector(".expand-btn").addEventListener("click", () => {
+            showExpandedHistory(date, data.tasks);
+        });
+
+        historicoArea.appendChild(historyItem);
+    }
+}
+
+function showExpandedHistory(date, tasks) {
+    historicoArea.innerHTML = `<h1>Histórico - ${date}</h1>`;
+
+    const expandedArea = document.createElement("div");
+    expandedArea.classList.add("expanded-history");
+
+    tasks.forEach(task => {
+        const taskDetails = document.createElement("div");
+        taskDetails.classList.add("expanded-task");
+        taskDetails.innerHTML = `
+            <div>
+                <strong>${task.name}</strong> - <span>${task.time}</span>
+            </div>
+        `;
+        expandedArea.appendChild(taskDetails);
+    });
+
+    historicoArea.appendChild(expandedArea);
+
+    const backButton = document.createElement("button");
+    backButton.textContent = "Voltar";
+    backButton.addEventListener("click", loadHistory);
+    historicoArea.appendChild(backButton);
+}
+
+historicoBtn.addEventListener("click", () => {
+    showHistory();
+    loadHistory();
+});
