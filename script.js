@@ -137,3 +137,25 @@ function addTask(time, name = "Nova tarefa") {
     // Salvar as tarefas no Local Storage
     saveTasks();
 }
+
+document.getElementById("finalizar-dia").addEventListener("click", () => {
+    const today = new Date().toISOString().split("T")[0];
+
+    const tasks = [];
+    document.querySelectorAll(".task").forEach(task => {
+        const taskName = task.querySelector(".task-name").value;
+        const taskTime = task.querySelector("span").textContent;
+        tasks.push({name: taskName, time: taskTime})
+    });
+
+    //pegar registros anteriores
+    let taskHistory = JSON.parse(localStorage.getItem("taskHistory")) || {};
+
+    //salvar a tarefa do dia na chave correspondente
+    taskHistory[today] = tasks;
+    localStorage.setItem("taskHistory", JSON.stringify(taskHistory));
+
+    //limpar as tarefas da lateral
+    document.querySelectorAll(".task").forEach(task => task.remove());
+    localStorage.removeItem("tasks");
+})
