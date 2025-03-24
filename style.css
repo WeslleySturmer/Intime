@@ -1,4 +1,5 @@
 @charset "UTF-8"; 
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
 * {
     box-sizing: border-box;
@@ -24,7 +25,7 @@ main{
 }
 
 .lateral {
-    background-color: rgb(37, 37, 37);
+    background-color: #0b0c10;
     padding: 10px;
 }
 
@@ -32,7 +33,7 @@ main{
     width: 100%;
     display: flex;
     margin-bottom: 30px;
-    background-color: #566981;
+    background-color: #66fcf1;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -40,30 +41,131 @@ main{
 .tarefas {
     width: 340px;
     height: 95vh;
-    background-image: linear-gradient(to top, #566981, #3a415a);
+    background-color: #1f2833;
     text-align: center;
-    color: white;
+    color: #66fcf1;
     padding: 10px;
     overflow-y: auto;
     box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.568);
+}
+
+.tarefas h1{
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#finalizar-dia {
+    margin: 10px;
+    background-color: transparent;
+    border: 1px solid #c5c6c7;
+    outline: none;
+    color: #45a29e;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+#finalizar-dia:hover {
+    background-color: #0b0c10;
+    color: #66fcf1;
+    border: 1px solid #66fcf1;
+}
+
+.task{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.425);
+    border-radius: 5px;
+    background-color: #1f2833;
+}
+
+.task-name{
+    border: none;
+    border-radius: 5px 5px 0 0;
+    font-size: 1em;
+    flex-grow: 1;
+    width: 100%;
+    background-color: #0b0c10;
+    color: #66fcf1;
+}
+
+.task span{
+    font-weight: bold;
+    margin: 10px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.267);
+    color: #66fcf1;
+}
+
+.delete-task{
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: black;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.267);
 }
 
 .historico {
     width: 340px;
     height: 95vh;
-    background-image: linear-gradient(to top, #566981, #3a415a);
+    background-color: #1f2833;
     text-align: center;
-    color: white;
+    color: #66fcf1;
     padding: 10px;
     overflow-y: auto;
     box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.568);
 }
 
-.cronometro{
+.history-item {
+    background-color: #45a29e;
+    color: #0b0c10;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.history-item button {
+    background-color: #89a7b1;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.history-item button:hover {
+    background-color: #566981;
+}
+
+.expanded-history {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.expanded-task {
+    background-color: #1f2833;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.expanded-task div {
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.workspace{
     width: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: #89a7b1;
+    background-color: #202e3f;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +175,7 @@ main{
 .centro{
     display: flex;
     flex-direction: column;
-    background-color: #566981;
+    background-color: #0b0c10;
     width: 500px;
     height: 500px;
     justify-content: center;
@@ -86,19 +188,28 @@ main{
     height: 80px;
     width: 80px;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 1px solid #c5c6c7;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: transparent;
+    color: #66fcf1;
+    font-weight: bold;
 }
 
 .centro input:hover{
-    background-color: #89a7b1;
+    background-color: #66fcf1;
+    color: #0b0c10;
     transform: scale(1.1);
 }
 
+.centro span{
+    color: #66fcf1;
+}
+
 footer{
-    background-color: black;
-    color: white;
+    background-color: #0b0c10;
+    color: #c5c6c7;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -115,37 +226,4 @@ footer h1{
     font-size: 3em;
 }
 
-.task{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.425);
-    border-radius: 5px;
-    background-color: #89a7b1;
-}
-
-.task-name{
-    border: none;
-    border-radius: 5px 5px 0 0;
-    font-size: 1em;
-    flex-grow: 1;
-    width: 100%;
-}
-
-.task span{
-    font-weight: bold;
-    margin: 10px;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.267);
-}
-
-.delete-task{
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 1.2em;
-    color: black;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.267);
-}
 
