@@ -156,8 +156,8 @@ function showTasks() {
 }
 
 function showHistory() {
-    historicoArea.classList.remove("hidden");
     tarefasArea.classList.add("hidden");
+    historicoArea.classList.remove("hidden");
 }
 
 tarefasBtn.addEventListener("click", showTasks);
@@ -180,7 +180,7 @@ function loadHistory() {
         historyItem.classList.add("history-item");
         historyItem.innerHTML = `
             <div>
-                <span>${date}</span>
+                <span>${date.split('-')[2]}/${date.split('-')[1]}/${date.split('-')[0]}</span> <br>
                 <span>Total: ${data.totalHours.toFixed(2)} horas</span>
             </div>
             <button class="expand-btn">Ver mais</button>
@@ -195,7 +195,7 @@ function loadHistory() {
 }
 
 function showExpandedHistory(date, tasks) {
-    historicoArea.innerHTML = `<h1>Histórico - ${date}</h1>`;
+    historicoArea.innerHTML = `<h1>Histórico <br> ${date.split('-')[2]}/${date.split('-')[1]}/${date.split('-')[0]}</h1>`;
 
     const expandedArea = document.createElement("div");
     expandedArea.classList.add("expanded-history");
