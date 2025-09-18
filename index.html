@@ -9,33 +9,37 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <header>
+        <input type="button" id="tarefas-btn" value="Tarefas">
+        <input type="button" id="historico-btn" value="Histórico">
+    </header>
     <main>
-        <div class="lateral">
-            <button id="tarefas-btn">T</button>
-            <button id="historico-btn">H</button>
-        </div>
-
-        <div class="tarefas" id="tarefas-area">
-            <h1>Tarefas !</h1>
-            <button id="finalizar-dia">Finalizar dia</button>
-            <div id="historico" class="historico-container"></div>
-
-        </div>
-
-        <div class="historico" id="historico-area">
-            <h1>Histórico</h1>
-        </div>
-
         <div class="workspace">
+            <div id="agrupa_tarefas_historicos">
+
+                <div class="tarefas" id="tarefas-area">
+                    <h1>Tarefas !</h1>
+                    <button id="finalizar-dia">Finalizar dia</button>
+                    <div id="historico" class="historico-container"></div>
+
+                </div>
+
+                <div class="historico" id="historico-area">
+                    <h1>Histórico</h1>
+                </div>
+            </div>
+
             <div class="centro">
+                <span id="timer">00:00:00</span>
+
                 <div>
                     <input type="button" value="Start" id="start">
                     <input type="button" value="Pause" id="stop">
                     <input type="button" value="Reset" id="reset">
                     <input type="button" value="Next" id="next">
                 </div>
-                <span id="timer">00:00:00</span>
             </div>
+
         </div>
     </main>
     <footer>

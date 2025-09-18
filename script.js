@@ -153,11 +153,21 @@ document.getElementById("finalizar-dia").addEventListener("click", () => {
 function showTasks() {
     tarefasArea.classList.remove("hidden");
     historicoArea.classList.add("hidden");
+
+    tarefasBtn.style.borderBottom = '#66fcf1 solid'
+    tarefasBtn.style.color = 'white'
+    historicoBtn.style.border = 'none'
+    historicoBtn.style.color = 'rgb(165, 165, 165)'
 }
 
 function showHistory() {
     tarefasArea.classList.add("hidden");
     historicoArea.classList.remove("hidden");
+
+    tarefasBtn.style.border = 'none'
+    tarefasBtn.style.color = 'rgb(165, 165, 165)'
+    historicoBtn.style.borderBottom = '#66fcf1 solid'
+    historicoBtn.style.color = 'white'
 }
 
 tarefasBtn.addEventListener("click", showTasks);
