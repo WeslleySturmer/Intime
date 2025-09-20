@@ -9,19 +9,20 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <input type="button" id="tarefas-btn" value="Tarefas">
-        <input type="button" id="historico-btn" value="Histórico">
-    </header>
+
     <main>
+        <header>
+            <input type="button" id="tarefas-btn" value="Tarefas">
+            <input type="button" id="historico-btn" value="Histórico">
+        </header>
         <div class="workspace">
             <div id="agrupa_tarefas_historicos">
 
                 <div class="tarefas" id="tarefas-area">
-                    <h1>Tarefas !</h1>
+                    <div id="historico" class="tarefas-container">
+                        <h1>Tarefas</h1>
+                    </div>
                     <button id="finalizar-dia">Finalizar dia</button>
-                    <div id="historico" class="historico-container"></div>
-
                 </div>
 
                 <div class="historico" id="historico-area">

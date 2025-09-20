@@ -77,7 +77,7 @@ nextButton.addEventListener("click", () => {
     interval = setInterval(update_timer, 1000);
 });
 
-const taskContainer = document.querySelector(".tarefas");
+const taskContainer = document.querySelector(".tarefas-container");
 
 function saveTasks() {
     const tasks = [];
@@ -205,7 +205,7 @@ function loadHistory() {
 }
 
 function showExpandedHistory(date, tasks) {
-    historicoArea.innerHTML = `<h1>Histórico <br> ${date.split('-')[2]}/${date.split('-')[1]}/${date.split('-')[0]}</h1>`;
+    historicoArea.innerHTML = `<h1>Histórico</h1> <p>${date.split('-')[2]}/${date.split('-')[1]}/${date.split('-')[0]}</p>`;
 
     const expandedArea = document.createElement("div");
     expandedArea.classList.add("expanded-history");
@@ -215,7 +215,8 @@ function showExpandedHistory(date, tasks) {
         taskDetails.classList.add("expanded-task");
         taskDetails.innerHTML = `
             <div>
-                <strong>${task.name}</strong> - <span>${task.time}</span>
+                <span>Tempo: ${task.time}</span>
+                <p><strong>${task.name}</strong></p>
             </div>
         `;
         expandedArea.appendChild(taskDetails);
