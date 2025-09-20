@@ -40,6 +40,7 @@ function update_timer() {
 startButton.addEventListener("click", () => {
     if (!interval) {
         interval = setInterval(update_timer, 1000);
+        timerDisplay.style.border = '10px solid #66fcf1'
     }
 });
 
@@ -47,6 +48,7 @@ startButton.addEventListener("click", () => {
 stopButton.addEventListener("click", () => {
     clearInterval(interval);
     interval = null;
+    timerDisplay.style.border = '1px solid #66fcf1'
 });
 
 // Resetar timer
@@ -60,21 +62,27 @@ resetButton.addEventListener("click", () => {
     minutes = 0;
     hours = 0;
     timerDisplay.textContent = "00:00:00";
+    timerDisplay.style.border = '1px solid #66fcf1'
 });
 
 // Próxima tarefa (next)
 nextButton.addEventListener("click", () => {
-    const lastTime = timerDisplay.textContent;
-    addTask(lastTime);
+    const lastTime = timerDisplay.textContent
+    addTask(lastTime)
 
-    clearInterval(interval);
-    interval = null;
-    seconds = 0;
-    minutes = 0;
-    hours = 0;
-    timerDisplay.textContent = "00:00:00";
+    clearInterval(interval)
+    interval = null
+    seconds = 0
+    minutes = 0
+    hours = 0
+    timerDisplay.textContent = "00:00:00"
 
-    interval = setInterval(update_timer, 1000);
+    interval = setInterval(update_timer, 1000)
+
+    timerDisplay.style.border = '1px solid #66fcf1'
+    setTimeout(() => {
+        timerDisplay.style.border = '10px solid #66fcf1'
+    }, 500)
 });
 
 const taskContainer = document.querySelector(".tarefas-container");
@@ -151,8 +159,8 @@ document.getElementById("finalizar-dia").addEventListener("click", () => {
 });
 
 function showTasks() {
-    tarefasArea.classList.remove("hidden");
-    historicoArea.classList.add("hidden");
+    tarefasArea.style.display = "flex"
+    historicoArea.style.display = "none"
 
     tarefasBtn.style.borderBottom = '#66fcf1 solid'
     tarefasBtn.style.color = 'white'
@@ -161,8 +169,8 @@ function showTasks() {
 }
 
 function showHistory() {
-    tarefasArea.classList.add("hidden");
-    historicoArea.classList.remove("hidden");
+    tarefasArea.style.display = "none"
+    historicoArea.style.display = "flex"
 
     tarefasBtn.style.border = 'none'
     tarefasBtn.style.color = 'rgb(165, 165, 165)'
