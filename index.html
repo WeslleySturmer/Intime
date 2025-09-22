@@ -6,40 +6,45 @@
     <title>Intime</title>
     <link rel="shortcut icon" href="imagens/icons8-old-fashioned-clock-96.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
     <main>
-        <div class="lateral">
-            <button id="tarefas-btn">T</button>
-            <button id="historico-btn">H</button>
-        </div>
-
-        <div class="tarefas" id="tarefas-area">
-            <h1>Tarefas !</h1>
-            <button id="finalizar-dia">Finalizar dia</button>
-            <div id="historico" class="historico-container"></div>
-
-        </div>
-
-        <div class="historico" id="historico-area">
-            <h1>Histórico</h1>
-        </div>
-
+        <header>
+            <input type="button" id="tarefas-btn" value="Tarefas">
+            <input type="button" id="historico-btn" value="Histórico">
+        </header>
         <div class="workspace">
+            <div id="agrupa_tarefas_historicos">
+
+                <div class="tarefas" id="tarefas-area">
+                    <div id="historico" class="tarefas-container">
+                        <h1>Tarefas</h1>
+                    </div>
+                    <button id="finalizar-dia">Finalizar dia</button>
+                </div>
+
+                <div class="historico" id="historico-area">
+                    <h1>Histórico</h1>
+                </div>
+            </div>
+
             <div class="centro">
+                <span id="timer">00:00:00</span>
+
                 <div>
                     <input type="button" value="Start" id="start">
                     <input type="button" value="Pause" id="stop">
                     <input type="button" value="Reset" id="reset">
                     <input type="button" value="Next" id="next">
                 </div>
-                <span id="timer">00:00:00</span>
             </div>
+
         </div>
     </main>
     <footer>
         <h1>Created by <a href="https://www.linkedin.com/in/weslley-wichmann-sturmer-762089258/" target="_blank">Weslley W. Sturmer</a></h1>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
