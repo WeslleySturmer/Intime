@@ -88,22 +88,24 @@ nextButton.addEventListener("click", () => {
 const taskContainer = document.querySelector(".tarefas-container");
 
 function saveTasks() {
-    const tasks = [];
+    const tasks = []
     document.querySelectorAll(".task").forEach(task => {
-        const taskName = task.querySelector(".task-name").value;
-        const taskTime = task.querySelector("span").textContent;
-        tasks.push({ name: taskName, time: taskTime });
+        const taskName = task.querySelector(".task-name").value
+        const taskTime = task.querySelector("span").textContent
+        tasks.push({ name: taskName, time: taskTime })
     });
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    if (tasks != []){
+        localStorage.setItem("tasks", JSON.stringify(tasks))
+    }
 }
 
 function loadTasks() {
-    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    savedTasks.forEach(task => addTask(task.time, task.name));
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || []
+    savedTasks.forEach(task => addTask(task.time, task.name))
 }
 
-window.addEventListener("load", loadTasks);
+window.addEventListener("load", loadTasks)
 
 function addTask(time, name = "Nova tarefa") {
     const task = document.createElement("div");
@@ -137,9 +139,9 @@ function addTask(time, name = "Nova tarefa") {
 }
 
 document.getElementById("finalizar-dia").addEventListener("click", () => {
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date().toISOString().split("T")[0]
 
-    const tasks = [];
+    let tasks = [];
     document.querySelectorAll(".task").forEach(task => {
         const taskName = task.querySelector(".task-name").value;
         const taskTime = task.querySelector("span").textContent;
@@ -148,35 +150,23 @@ document.getElementById("finalizar-dia").addEventListener("click", () => {
 
     let taskHistory = JSON.parse(localStorage.getItem("taskHistory")) || {};
 
-    // Calcular horas totais
-    const totalHours = calculateTotalHours(tasks);
+    if (taskHistory[today] != null){
+        tasks = taskHistory[today].tasks.concat(tasks)        
 
-    taskHistory[today] = { tasks, totalHours };
-    localStorage.setItem("taskHistory", JSON.stringify(taskHistory));
+        const totalHours = calculateTotalHours(tasks)
+
+        taskHistory[today] = { tasks, totalHours }
+        localStorage.setItem("taskHistory", JSON.stringify(taskHistory))
+    } else {
+        const totalHours = calculateTotalHours(tasks)
+
+        taskHistory[today] = { tasks, totalHours }
+        localStorage.setItem("taskHistory", JSON.stringify(taskHistory))
+    }
 
     document.querySelectorAll(".task").forEach(task => task.remove());
     localStorage.removeItem("tasks");
 });
-
-function showTasks() {
-    tarefasArea.style.display = "flex"
-    historicoArea.style.display = "none"
-
-    tarefasBtn.style.borderBottom = '#66fcf1 solid'
-    tarefasBtn.style.color = 'white'
-    historicoBtn.style.border = 'none'
-    historicoBtn.style.color = 'rgb(165, 165, 165)'
-}
-
-function showHistory() {
-    tarefasArea.style.display = "none"
-    historicoArea.style.display = "flex"
-
-    tarefasBtn.style.border = 'none'
-    tarefasBtn.style.color = 'rgb(165, 165, 165)'
-    historicoBtn.style.borderBottom = '#66fcf1 solid'
-    historicoBtn.style.color = 'white'
-}
 
 tarefasBtn.addEventListener("click", showTasks);
 historicoBtn.addEventListener("click", showHistory);
@@ -236,6 +226,26 @@ function showExpandedHistory(date, tasks) {
     backButton.textContent = "Voltar";
     backButton.addEventListener("click", loadHistory);
     historicoArea.appendChild(backButton);
+}
+
+function showTasks() {
+    tarefasArea.style.display = "flex"
+    historicoArea.style.display = "none"
+
+    tarefasBtn.style.borderBottom = '#66fcf1 solid'
+    tarefasBtn.style.color = 'white'
+    historicoBtn.style.border = 'none'
+    historicoBtn.style.color = 'rgb(165, 165, 165)'
+}
+
+function showHistory() {
+    tarefasArea.style.display = "none"
+    historicoArea.style.display = "flex"
+
+    tarefasBtn.style.border = 'none'
+    tarefasBtn.style.color = 'rgb(165, 165, 165)'
+    historicoBtn.style.borderBottom = '#66fcf1 solid'
+    historicoBtn.style.color = 'white'
 }
 
 historicoBtn.addEventListener("click", () => {
