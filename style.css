@@ -226,6 +226,7 @@ header input:hover{
 }
 
 .expanded-history {
+    width: 100%;
     margin-top: 20px;
     padding: 10px;
 }
@@ -234,7 +235,11 @@ header input:hover{
     background-color: #1f2833;
     padding: 10px;
     margin: 5px;
+    max-width: 95%;
     border-radius: 5px;
+    height: auto;
+
+    overflow-wrap: break-word;
 }
 
 .expanded-task div {
