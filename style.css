@@ -82,7 +82,7 @@ header input:hover{
 #agrupa_tarefas_historicos{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     align-content: center;
     height: 100%;
