@@ -53,7 +53,7 @@ main {
 }
 
 @media (max-width: 1000px) {
-    body{
+    body {
         height: auto;
     }
 
@@ -67,9 +67,7 @@ main {
         width: 600px;
     }
 
-    .tarefas-container{
-        
-    }
+    .tarefas-container {}
 }
 
 header {
@@ -213,7 +211,6 @@ header input:hover {
     text-align: center;
     color: #66fcf1;
     overflow-y: auto;
-    width: 90%;
 }
 
 .historico button {
@@ -241,26 +238,25 @@ header input:hover {
 }
 
 .history-item {
+    width: 250px;
+
     background-color: rgba(69, 162, 157, 0.190);
     color: #66fcf1;
     padding: 10px;
     margin: 17px 0px;
-    width: 90%;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
 }
 
 .expanded-history {
-    width: 100%;
     margin-top: 20px;
-    padding: 10px;
 }
 
 .expanded-task {
+    width: 250px;
+
     background-color: #1f2833;
-    padding: 10px;
-    margin: 5px;
-    max-width: 95%;
+    margin: 5px 0px;
     border-radius: 5px;
     height: auto;
 
@@ -270,6 +266,7 @@ header input:hover {
 .expanded-task div {
     font-size: 1.1em;
     text-align: left;
+    padding: 10px;
 }
 
 .centro {
