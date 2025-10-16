@@ -294,14 +294,15 @@ header input:hover {
 }
 
 footer {
-    background-color: #0b0c1042;
-    color: #c5c6c7;
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5vh;
+    flex-direction: column;
+
+    background-color: #0b0c1042;
+    color: #fff;
     width: 100%;
+    padding: 10px;
 }
 
 footer h1 {
@@ -333,4 +334,15 @@ footer a {
     width: 420px;
     margin-bottom: 20px;
  }   
+footer i{
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+footer h2 {
+    font-size: 1em;
+}
+
+footer a {
+    color: white;
 }
