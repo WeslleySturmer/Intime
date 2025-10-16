@@ -257,6 +257,13 @@ header input:hover {
     height: 100%;
 }
 
+.centro div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .centro input {
     margin: 10px;
     padding: 20px;
@@ -313,6 +320,20 @@ footer a {
     color: white;
 }
 
+footer i {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+footer h2 {
+    font-size: 1em;
+}
+
+footer a {
+    color: white;
+}
+
+
 @media (max-width: 1000px) {
     body {
         height: auto;
@@ -330,19 +351,23 @@ footer a {
 }
 
 @media (max-width: 600px) {
- .workspace {
-    width: 420px;
-    margin-bottom: 20px;
- }   
-footer i{
-    font-size: 2em;
-    margin-bottom: 0.5em;
+    .workspace {
+        width: 420px;
+        margin-bottom: 20px;
+    }
 }
 
-footer h2 {
-    font-size: 1em;
-}
+@media (max-width: 400px) {
+    body{
+        width: 100vw;
+    }
 
-footer a {
-    color: white;
+    .workspace {
+        width: 350px;
+        margin-bottom: 20px;
+    }
+
+    .centro div {
+        width: 200px;
+    }
 }
