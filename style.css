@@ -1,4 +1,4 @@
-@charset "UTF-8"; 
+@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
 * {
@@ -10,11 +10,11 @@
 
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -26,7 +26,7 @@ body{
     background-size: cover;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +36,7 @@ main{
     height: 80%;
 }
 
-.workspace{
+.workspace {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,7 +62,7 @@ header {
     padding: 10px;
 }
 
-header input{
+header input {
     margin: 30px 5px;
     background: none;
     border: none;
@@ -74,12 +74,12 @@ header input{
     padding: 10px;
 }
 
-header input:hover{
+header input:hover {
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
-#agrupa_tarefas_historicos{
+#agrupa_tarefas_historicos {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -105,14 +105,14 @@ header input:hover{
     height: 100%;
 }
 
-.tarefas h1{
+.tarefas h1 {
     font-size: 2em;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
 }
 
-.tarefas-container{
-    
+.tarefas-container {
+
     overflow-y: auto;
     height: 90%;
     width: 90%;
@@ -143,7 +143,7 @@ header input:hover{
     box-shadow: black 0px 0px 15px;
 }
 
-.task{
+.task {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,7 +154,7 @@ header input:hover{
     background-color: #1f2833;
 }
 
-.task-name{
+.task-name {
     border: none;
     border-radius: 5px 5px 0 0;
     font-size: 1em;
@@ -164,14 +164,14 @@ header input:hover{
     color: #66fcf1;
 }
 
-.task span{
+.task span {
     font-weight: bold;
     margin: 10px;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.267);
     color: #66fcf1;
 }
 
-.delete-task{
+.delete-task {
     border: none;
     background: none;
     cursor: pointer;
@@ -191,7 +191,7 @@ header input:hover{
     width: 90%;
 }
 
-.historico button{
+.historico button {
     background-color: rgb(137, 167, 177);
     border: none;
     margin-top: 7px;
@@ -209,7 +209,7 @@ header input:hover{
     color: white;
 }
 
-.historico h1{
+.historico h1 {
     font-size: 2em;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
@@ -247,7 +247,7 @@ header input:hover{
     text-align: left;
 }
 
-.centro{
+.centro {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -270,14 +270,14 @@ header input:hover{
     font-weight: bold;
 }
 
-.centro input:hover{
+.centro input:hover {
     background-color: #66fcf1;
     color: #0b0c10;
     transform: scale(1.1);
     border: none;
 }
 
-.centro span{
+.centro span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,25 +293,27 @@ header input:hover{
     transition: 0.5s ease-in-out;
 }
 
-footer{
-    background-color: #0b0c1042;
-    color: #c5c6c7;
-    margin: 0;
+footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5vh;
+    flex-direction: column;
+
+    background-color: #0b0c1042;
+    color: #fff;
     width: 100%;
+    padding: 10px;
 }
 
-footer h1{
+footer i{
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+footer h2 {
     font-size: 1em;
 }
 
-footer a{
+footer a {
     color: white;
 }
-
-
-
-
