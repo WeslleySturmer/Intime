@@ -123,12 +123,9 @@ header input:hover {
 }
 
 #finalizar-dia {
-
     margin: 10px;
-    width: 65%;
-    height: 8%;
-    max-width: 170px;
-    max-height: 50px;
+    width: 200px;
+    height: 40px;
     background-color: transparent;
     border: 1px solid #66fcf1;
     border-radius: 30px;
@@ -314,9 +311,6 @@ footer h1 {
 footer a {
     color: white;
 }
-
-
-
 
 @media (max-width: 1000px) {
     body {
